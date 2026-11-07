@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#183b32">
+    <title>Study Planner</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Study Planner home">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span>Study Planner</span>
+      </a>
+      <p class="today" id="today"></p>
+    </header>
+
+    <main class="workspace">
+      <section class="overview" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">YOUR STUDY DESK</p>
+          <h1 id="page-title">Make room for what matters.</h1>
+        </div>
+        <div class="progress-block" aria-live="polite">
+          <div class="progress-copy">
+            <span id="progress-label">No tasks yet</span>
+            <span id="progress-count">0 / 0</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-label="Tasks completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="progress-fill" id="progress-fill"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary" aria-label="Task summary">
+        <div class="summary-item"><span class="summary-value" id="open-count">0</span><span class="summary-label">Open</span></div>
+        <div class="summary-item"><span class="summary-value overdue-text" id="overdue-count">0</span><span class="summary-label">Overdue</span></div>
+        <div class="summary-item"><span class="summary-value" id="done-count">0</span><span class="summary-label">Completed</span></div>
+      </section>
+
+      <div class="content-grid">
+        <section class="entry-panel" aria-labelledby="form-title">
+          <div class="section-heading">
+            <span class="section-number">01</span>
+            <h2 id="form-title">Add to your list</h2>
+          </div>
+          <form id="task-form">
+            <label for="task-title">Task</label>
+            <input id="task-title" name="title" type="text" maxlength="200" placeholder="e.g. Review chemistry notes" required>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="task-due">Due date <span class="optional">Optional</span></label>
+                <input id="task-due" name="due_date" type="date">
+              </div>
+              <div class="field">
+                <label for="task-priority">Priority</label>
+                <select id="task-priority" name="priority">
+                  <option>High</option>
+                  <option selected>Medium</option>
+                  <option>Low</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="add-button" type="submit"><span aria-hidden="true">+</span> Add task</button>
+            <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="task-panel" aria-labelledby="tasks-title">
+          <div class="task-heading">
+            <div class="section-heading">
+              <span class="section-number">02</span>
+              <h2 id="tasks-title">Your tasks</h2>
+            </div>
+            <span class="task-total" id="task-total">0 tasks</span>
+          </div>
+
+          <div class="filter-bar" role="group" aria-label="Filter tasks">
+            <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All <span id="all-filter-count">0</span></button>
+            <button class="filter-button" type="button" data-filter="open" aria-pressed="false">Open</button>
+            <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Completed</button>
+          </div>
+
+          <ul class="task-list" id="task-list" aria-live="polite" aria-relevant="additions removals text"></ul>
+          <div class="empty-state" id="empty-state">
+            <span class="empty-mark" aria-hidden="true">—</span>
+            <p class="empty-title">Nothing on the list</p>
+            <p class="empty-copy">Add a task to start shaping your study plan.</p>
+          </div>
+          <p class="connection-message" id="connection-message" role="alert" hidden></p>
+        </section>
+      </div>
+
+      <footer class="workspace-footer">
+        <span>STUDENT PRODUCTIVITY ASSISTANT</span>
+        <span>Saved locally on this computer</span>
+      </footer>
+    </main>
+  </body>
+</html>
